@@ -1,11 +1,15 @@
-FROM meteorhacks/meteord:base
+FROM grigio/meteor:1.0.2.1
 
-MAINTAINER MeteorHacks Pvt Ltd.
+# Add the source of your Meteor app and build
+ADD . /app
+RUN /meteor-build.sh
 
-ONBUILD COPY ./ /app
-ONBUILD RUN bash $METEORD_DIR/on_build.sh
+# Run the generated files
+CMD /meteor-run.sh
 
-# Run as you wish!
-# docker run -d --name libreboard-db mongo
-# docker run -d --link "libreboard-db:db" -e "MONGO_URL=mongodb://db" \
-#   -e "ROOT_URL=http://example.com" -p 8080:80 mquandalle/libreboard
+##  Build the image
+# sudo docker build -t grigio/metrello .
+
+## Run it as you wish :)
+# sudo docker run -d -e "VIRTUAL_HOST=metrello.home" -e "MONGO_URL=mongodb://172.17.0.3:27017/metrello-test" \
+#  -e "ROOT_URL=http://example.com" -p 5555:8080 -it grigio/metrello sh /meteor-run.sh
