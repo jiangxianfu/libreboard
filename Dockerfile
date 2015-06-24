@@ -1,5 +1,8 @@
-FROM meteorhacks/meteord:onbuild
-MAINTAINER Maxime Quandalle <maxime@quandalle.com>
+FROM meteorhacks/meteord:base
+MAINTAINER MeteorHacks Pvt Ltd.
+
+ONBUILD COPY ./ /app
+ONBUILD RUN bash $METEORD_DIR/on_build.sh
 
 # Run as you wish!
 # docker run -d --name libreboard-db mongo
