@@ -15,13 +15,13 @@ ADD ./meteor-run.sh /
 
 
 ENV PORT 80
-EXPOSE   8080
+EXPOSE   80
 
 WORKDIR /app
 ADD . /app
 
 
-ONBUILD RUN /meteor-build.sh
+RUN /meteor-build.sh
 
 ## Development
 # CMD meteor --release $METEOR_RELEASE --port $PORT
