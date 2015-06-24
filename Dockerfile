@@ -1,7 +1,10 @@
-FROM meteorhacks/meteord:onbuild
+FROM meteorhacks/meteord:base
 MAINTAINER MeteorHacks Pvt Ltd.
 
-RUN apt-get update && apt-get install -yq git
+ONBUILD RUN apt-get update && apt-get install -yq git vim
+ONBUILD COPY ./ /app
+ONBUILD RUN bash $METEORD_DIR/on_build.sh
+
 
 # Run as you wish!
 # docker run -d --name libreboard-db mongo
