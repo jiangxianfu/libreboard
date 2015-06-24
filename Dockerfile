@@ -7,7 +7,9 @@ RUN apt-get -qq update && apt-get install -qq -y curl procps git vim
 # ENV METEOR_RELEASE 1.1.0.2
 
 # Install a specific Meteor release
-RUN curl https://install.meteor.com | /bin/sh
+# RUN curl https://install.meteor.com | /bin/sh
+ADD ./meteor-install.sh /
+RUN /bin/sh /meteor-install.sh
 
 # Build scripts
 ADD ./meteor-build.sh /
@@ -24,7 +26,7 @@ ADD . /app
 ONBUILD RUN /meteor-build.sh
 
 ## Development
-# CMD meteor --release $METEOR_RELEASE --port $PORT
+# CMD meteor --port $PORT
 
 ## Production
 # Remember: docker run -e "MONGO_URL=mongodb://172.17.0.4:27017/mytest" -e "ROOT_URL=http://example.com" 
