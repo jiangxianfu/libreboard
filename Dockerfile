@@ -1,6 +1,8 @@
 FROM meteorhacks/meteord:onbuild
 MAINTAINER MeteorHacks Pvt Ltd.
 
+RUN apt-get update && apt-get install -yq git
+
 # Run as you wish!
 # docker run -d --name libreboard-db mongo
 # docker run -d --link "libreboard-db:db" -e "MONGO_URL=mongodb://db" \
