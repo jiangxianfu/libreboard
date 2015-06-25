@@ -23,7 +23,7 @@ WORKDIR /app
 ADD . /app
 
 
-ONBUILD RUN /meteor-build.sh
+RUN /meteor-build.sh
 
 ## Development
 # CMD meteor --port $PORT
