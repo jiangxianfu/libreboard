@@ -9,7 +9,7 @@ RUN apt-get -qq update && apt-get install -qq -y curl procps git vim
 # Install a specific Meteor release
 # RUN curl https://install.meteor.com | sh
 ADD ./meteor-install.sh /
-RUN /meteor-install.sh
+RUN sh /meteor-install.sh
 
 # Build scripts
 ADD ./meteor-build.sh /
@@ -23,7 +23,7 @@ WORKDIR /app
 ADD . /app
 
 
-RUN /meteor-build.sh
+RUN sh /meteor-build.sh
 
 ## Development
 # CMD meteor --port $PORT
