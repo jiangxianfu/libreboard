@@ -1,31 +1,34 @@
 FROM debian:jessie
 MAINTAINER jiangxianfu https://github.com/jiangxianfu
-
+# linux debian
 ENV DEBIAN_FRONTEND noninteractive
+
+# meteor main.js port
 ENV PORT 80
 # ENV METEOR_RELEASE 1.1.0.2
 
 
 # Install Soft
-RUN apt-get -qq update && apt-get install -qq -y curl procps git vim
+RUN apt-get -qq update && apt-get install -qq -y curl procps git
 
 # Install a specific Meteor release
 RUN curl https://install.meteor.com | sh
 
-# Init 
+# Init App
 ADD . /app
 
 WORKDIR /app
 
+# expose port
 EXPOSE   80
 
 
-# Build scripts
+# Build Scripts
 ADD ./meteor-build.sh /
 ADD ./meteor-run.sh /
 
 
-
+# Start Build
 RUN sh /meteor-build.sh
 
 ## Development
