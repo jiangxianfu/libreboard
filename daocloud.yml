@@ -1,12 +1,10 @@
-image: debian:jessie
-
 services:
   - mongodb
 
 # using default docker-link env
 env:
-  - MONGODB_PORT_27017_TCP_ADDR=mongodb
-  - MONGODB_PORT_27017_TCP_PORT=27017
+  - MONGO_URL:mongodb://user:pass@ip:port/dbname
+  - ROOT_URL:http://localhost
 
 script:
   - echo "helloword"

@@ -2,23 +2,28 @@ FROM debian:jessie
 MAINTAINER Luigi Maselli http://grigio.org
 
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get -qq update && apt-get install -qq -y curl procps git vim
 
 # ENV METEOR_RELEASE 1.1.0.2
+# ENV PORT 80
+
+# Install Soft
+RUN apt-get -qq update && apt-get install -qq -y curl procps git vim
 
 # Install a specific Meteor release
 RUN curl https://install.meteor.com | sh
+
+# Init 
+ADD . /app
+
+WORKDIR /app
+
+EXPOSE   80
+
 
 # Build scripts
 ADD ./meteor-build.sh /
 ADD ./meteor-run.sh /
 
-
-ENV PORT 80
-EXPOSE   80
-
-WORKDIR /app
-ADD . /app
 
 
 RUN sh /meteor-build.sh
