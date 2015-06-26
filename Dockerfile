@@ -2,9 +2,9 @@ FROM debian:jessie
 MAINTAINER jiangxianfu https://github.com/jiangxianfu
 
 ENV DEBIAN_FRONTEND noninteractive
-
+ENV PORT 80
 # ENV METEOR_RELEASE 1.1.0.2
-# ENV PORT 80
+
 
 # Install Soft
 RUN apt-get -qq update && apt-get install -qq -y curl procps git vim
