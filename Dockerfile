@@ -5,7 +5,6 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # meteor main.js port
 ENV PORT 80
-# ENV METEOR_RELEASE 1.1.0.2
 
 
 # Install Soft
