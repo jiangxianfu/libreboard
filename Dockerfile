@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER Luigi Maselli http://grigio.org
+MAINTAINER jiangxianfu https://github.com/jiangxianfu
 
 ENV DEBIAN_FRONTEND noninteractive
 
