@@ -7,9 +7,7 @@ RUN apt-get -qq update && apt-get install -qq -y curl procps git vim
 # ENV METEOR_RELEASE 1.1.0.2
 
 # Install a specific Meteor release
-# RUN curl https://install.meteor.com | sh
-ADD ./meteor-install.sh /
-RUN sh /meteor-install.sh
+RUN curl https://install.meteor.com | sh
 
 # Build scripts
 ADD ./meteor-build.sh /
